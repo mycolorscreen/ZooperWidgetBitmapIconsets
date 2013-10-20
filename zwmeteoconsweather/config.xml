@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Weather conditions:
+ 0 = UNKOWN
+ 1 = STORM
+ 2 = THUNDERSTORM
+ 3 = DRIZZLE
+ 4 = RAIN
+ 5 = SHOWERS 
+ 6 = FLURRIES
+ 7 = RAINANDSNOW
+ 8 = SNOW
+ 9 = HAIL
+10 = FOG 
+11 = HAZE 
+12 = WIND
+13 = PARTLY_CLOUDY
+14 = MOSTLY_CLOUDY
+15 = CLEAR 
+16 = FAIR
+-->
+<config>
+  <title>Meteor Weather Icons</title>
+  <description>Minimal filled weather icons</description>
+  <font>meteoconsfilled.ttf</font>
+  <demo>nhilpqo</demo>
+  <default>b</default>
+  <!-- We provide current, 2 days and sunrise/sunset icons modes -->
+  <mode value="#WCCODE#">Current Weather</mode>
+  <mode value="#W0CODE#">Today's Weather</mode>
+  <mode value="#W1CODE#">Tomorrow's Weather</mode>
+  <mode value="#W2CODE#">2 Days Weather</mode>
+  <mode value="#W3CODE#">3 Days Weather</mode>
+  <mode value="#W4CODE#">4 Days Weather</mode>
+  <mode value="#W5CODE#">5 Days Weather</mode>
+  <mode value="#W6CODE#">6 Days Weather</mode>
+  <mode value="#W7CODE#">7 Days Weather</mode>  
+  <!-- Following condition icons are the same day and night -->
+  <condition>
+    <!-- Storm -->
+    <test>#MODE#=1</test>
+    <image>n</image>
+  </condition>
+  <condition>
+    <!-- Thunder Storm -->
+    <test>#MODE#=2</test>
+    <image>h</image>
+  </condition>
+  <condition>
+    <!-- Drizzle -->
+    <test>#MODE#=3</test>
+    <image>i</image>
+  </condition>
+  <condition>
+    <!-- Rain and Showers -->
+    <test>#MODE#=4</test>
+    <test>#MODE#=5</test>
+    <image>l</image>
+  </condition>
+  <condition>
+    <!-- Flurries -->
+    <test>#MODE#=6</test>
+    <image>o</image>
+  </condition>
+  <condition>
+    <!-- Rain and Snow / Snow -->
+    <test>#MODE#=7</test>
+    <test>#MODE#=8</test>
+    <image>p</image>
+  </condition>
+  <condition>
+    <!-- Hail -->
+    <test>#MODE#=9</test>
+    <image>q</image>
+  </condition>
+  <condition>
+    <!-- Fog / Haze -->
+    <test>#MODE#=10</test>
+    <test>#MODE#=11</test>
+    <image>t</image>
+  </condition>
+  <condition>
+    <!-- Wind -->
+    <test>#MODE#=12</test>
+    <image>a</image>
+  </condition>
+  <condition>
+    <!-- Mostly Cloudy -->
+    <test>#MODE#=14</test>
+    <image>r</image>
+  </condition>
+  <!-- Nightly icons block will be skipped entirely if his conditions do not match -->
+  <condition>
+    <!-- We just check if sunrise hour is greater than current -->
+    <test>#ARHH#&gt;#DHH#</test>
+    <!-- Or if sunset if minor than current -->
+    <test>#ASHH#&lt;#DHH#</test>
+    <condition>
+      <!-- Fair/Clear -->
+      <test>#MODE#=15</test>
+      <test>#MODE#=16</test>
+      <image>d</image>
+    </condition>
+    <condition>
+      <!-- Partly cloudy -->
+      <test>#MODE#=13</test>
+      <image>f</image>
+    </condition>
+  </condition>
+  <!-- Daily conditions (parser will arrive here if it did not catch anything in night block) -->
+  <condition>
+    <!-- Fair/Clear -->
+    <test>#MODE#=15</test>
+    <test>#MODE#=16</test>
+    <image>c</image>
+  </condition>
+  <condition>
+    <!-- Partly cloudy -->
+    <test>#MODE#=13</test>
+    <image>e</image>
+  </condition>
+</config>

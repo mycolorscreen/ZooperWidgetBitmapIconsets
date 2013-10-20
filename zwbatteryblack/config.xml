@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+-->
+<config>
+  <title>Battery Icons Filled</title>
+  <description>Minimal battery icons with 8 discharging states</description>
+  <font>icons.ttf</font>
+  <demo>abc0123456</demo>
+  <default>b</default>
+  <!-- Multiple modes -->
+  <mode value="B1">Filled Battery Indicator</mode>
+  <mode value="B2">Alternative Battery Indicator</mode>
+  <mode value="A1">Static Alarm Icon 1</mode>
+  <mode value="A2">Static Alarm Icon 2</mode>
+  <!-- Static alarm icons -->
+  <condition>
+    <test>#MODE#=A1</test>
+	<!-- Is alarm set ? -->
+	<condition>
+	  <test>#SASET#=1</test>
+      <image>Q</image>
+	</condition>
+	<!-- No alarm set -->
+	<image>O</image>
+  </condition>
+  <condition>
+    <test>#MODE#=A2</test>
+	<!-- Is alarm set ? -->
+	<condition>
+	  <test>#SASET#=1</test>
+      <image>r</image>
+	</condition>
+	<!-- No alarm set -->
+    <image>o</image>
+  </condition>  
+  <!-- Battery first mode -->
+  <condition>
+    <test>#MODE#=B1</test>  
+	  <condition>
+		<test>#BSTATN#=2</test>
+		<image>a</image>
+	  </condition>
+	  <!-- Status Unknown -->
+	  <condition>
+		<test>#BSTATN#=1</test>
+		<image>c</image>
+	  </condition>
+	  <!-- Full -->
+	  <condition>
+		<test>#BSTATN#=5</test>
+		<image>b</image>
+	  </condition>
+	  <!-- Level > 90% -->
+	  <condition>
+		<test>#BLEVN#&gt;90</test>
+		<image>7</image>
+	  </condition>
+	  <!-- Level > 78% -->
+	  <condition>
+		<test>#BLEVN#&gt;78</test>
+		<image>6</image>
+	  </condition>
+	  <!-- Level > 66% -->
+	  <condition>
+		<test>#BLEVN#&gt;66</test>
+		<image>5</image>
+	  </condition>
+	  <!-- Level > 54% -->
+	  <condition>
+		<test>#BLEVN#&gt;54</test>
+		<image>5</image>
+	  </condition>
+	  <!-- Level > 42% -->
+	  <condition>
+		<test>#BLEVN#&gt;42</test>
+		<image>4</image>
+	  </condition>
+	  <!-- Level > 30% -->
+	  <condition>
+		<test>#BLEVN#&gt;30</test>
+		<image>3</image>
+	  </condition>
+	  <!-- Level > 20% -->
+	  <condition>
+		<test>#BLEVN#&gt;20</test>
+		<image>2</image>
+	  </condition>
+	  <!-- Level > 10% -->
+	  <condition>
+		<test>#BLEVN#&gt;10</test>
+		<image>1</image>
+	  </condition>
+	  <!-- Level < 10% -->
+	  <condition>
+		<test>#BLEVN#&lt;10</test>
+		<image>0</image>
+	  </condition>
+	</condition>
+  <!-- Battery second mode -->
+  <condition>
+    <test>#MODE#=B2</test>  
+	  <condition>
+		<test>#BSTATN#=2</test>
+		<image>❺</image>
+	  </condition>
+	  <!-- Status Unknown -->
+	  <condition>
+		<test>#BSTATN#=1</test>
+		<image>❻</image>
+	  </condition>
+	  <!-- Full -->
+	  <condition>
+		<test>#BSTATN#=5</test>
+		<image>❹</image>
+	  </condition>
+	  <!-- Level > 90% -->
+	  <condition>
+		<test>#BLEVN#&gt;90</test>
+		<image>❷</image>
+	  </condition>
+	  <!-- Level > 70% -->
+	  <condition>
+		<test>#BLEVN#&gt;70</test>
+		<image>❶</image>
+	  </condition>
+	  <!-- Level > 50% -->
+	  <condition>
+		<test>#BLEVN#&gt;50</test>
+		<image>⑩</image>
+	  </condition>
+	  <!-- Level > 35% -->
+	  <condition>
+		<test>#BLEVN#&gt;35</test>
+		<image>⑨</image>
+	  </condition>
+	  <!-- Level > 15% -->
+	  <condition>
+		<test>#BLEVN#&gt;42</test>
+		<image>⑧</image>
+	  </condition>
+	  <!-- Level < 15% -->
+	  <condition>
+		<test>#BLEVN#&lt;10</test>
+		<image>⑦</image>
+	  </condition>
+	</condition>
+</config>

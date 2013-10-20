@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+This is a PNG based iconset showing battery discharging/charging images plus or
+a static alarm icon useful to show next alarm.
+-->
+<config>
+  <title>ZW Battery Icons</title>
+  <description>Oxygen based battery Iconset with Alarm static Icon mode</description>
+  <!-- The demo Icon is mandatory and must exist -->
+  <demo>battery_charging_060.png</demo>
+  <!--
+  This is the path inside the iconset where icons are found, usually "icons"
+  is fine, this is a static value and will not be parsed by the text parser and
+  it's mandatory
+  -->
+  <icons>icons</icons>
+  <!-- 
+  Default icon is mandatory, will be used when parser doesn't know what to 
+  render so it will fall back to this image. 
+  -->
+  <default>battery_discharging_000.png</default>
+  <!-- 
+  We provide battery level mode or static alarm icon, for the battery level we 
+  assign mode to #BLEVN# because in this way the parser with convert #BLEVN# only 
+  once before checking the conditions 
+  -->
+  <mode value="#BLEVN#">Battery Icons</mode>
+  <mode value="ALARM">Static Alarm icon</mode>
+  <!-- First we check for static icons -->
+  <condition>
+    <!-- Alarm Icon -->
+    <test>#MODE#=ALARM</test>
+    <image>alarmclock.png</image>
+  </condition>
+  <!-- Status Unknown, we display fully dischargen battery -->
+  <condition>
+    <test>#MODE#=1</test>
+    <image>battery_discharging_000.png</image>
+  </condition>
+  <!-- Battery Full -->
+  <condition>
+    <test>#BSTATN#=5</test>
+    <image>battery_discharging_100.png</image>
+  </condition>
+  <!-- Battery Charging? Lets use charging icons -->
+  <condition>
+    <test>#BSTATN#=2</test>
+	<!-- Level > 90% -->
+	<condition>
+	  <test>#MODE#&gt;80</test>
+	  <image>battery_charging_100.png</image>
+	</condition>
+	<!-- Level > 80% -->
+	<condition>
+	  <test>#MODE#&gt;60</test>
+	  <image>battery_charging_080.png</image>
+	</condition>
+	<!-- Level > 60% -->
+	<condition>
+	  <test>#MODE#&gt;40</test>
+	  <image>battery_charging_060.png</image>
+	</condition>
+	<!-- Level > 40% -->
+	<condition>
+	  <test>#MODE#&gt;20</test>
+	  <image>battery_charging_040.png</image>
+	</condition>
+	<!-- Level > 20% -->
+	<condition>
+	  <test>#MODE#&gt;10</test>
+	  <image>battery_charging_020.png</image>
+	</condition>
+	<!-- Level < 20% -->
+	<condition>
+	  <test>#MODE#&lt;10</test>
+	  <image>battery_charging_000.png</image>
+	</condition>
+  </condition>
+  <!-- From now on battery must be discharging -->
+  <!-- Level > 90% -->
+  <condition>
+    <test>#MODE#&gt;80</test>
+    <image>battery_discharging_100.png</image>
+  </condition>
+  <!-- Level > 80% -->
+  <condition>
+    <test>#MODE#&gt;60</test>
+    <image>battery_discharging_080.png</image>
+  </condition>
+  <!-- Level > 60% -->
+  <condition>
+    <test>#MODE#&gt;40</test>
+    <image>battery_discharging_060.png</image>
+  </condition>
+  <!-- Level > 40% -->
+  <condition>
+    <test>#MODE#&gt;20</test>
+    <image>battery_discharging_040.png</image>
+  </condition>
+  <!-- Level > 20% -->
+  <condition>
+    <test>#MODE#&gt;10</test>
+    <image>battery_discharging_020.png</image>
+  </condition>
+  <!-- Level < 20% -->
+  <condition>
+    <test>#MODE#&lt;10</test>
+    <image>battery_discharging_000.png</image>
+  </condition>
+</config>
