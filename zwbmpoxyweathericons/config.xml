@@ -40,42 +40,46 @@ Weather conditions:
     inside these block parser will show the "daily" icon in the following block, please add items here
     if your iconset supports more night icons (like night snow)
     -->
-    <condition>
-        <!-- We just check if sunrise hour is greater than current (#AISDAY# = 0 means "is night") -->
-        <test>#AISDAY#=0</test>
-        <!-- Storm -->
-        <condition>
-            <test>#MODE#=1</test>
-            <image>weather-storm-night.png</image>
-        </condition>
-        <condition>
-            <!-- Drizzle / Rain-->
-            <test>#MODE#=3</test>
-            <test>#MODE#=4</test>
-            <image>weather-showers-scattered-night.png</image>
-        </condition>
-        <condition>
-            <!-- Showers -->
-            <test>#MODE#=5</test>
-            <image>weather-showers-night.png</image>
-        </condition>
-        <condition>
-            <!-- Partly cloudy -->
-            <test>#MODE#=13</test>
-            <image>weather-few-clouds-night.png</image>
-        </condition>
-        <condition>
-            <!-- Mostly Cloudy -->
-            <test>#MODE#=14</test>
-            <image>weather-clouds-night.png</image>
-        </condition>
-        <condition>
-            <!-- Fair/Clear -->
-            <test>#MODE#=15</test>
-            <test>#MODE#=16</test>
-            <image>weather-clear-night.png</image>
-        </condition>
-    </condition>
+	<condition>
+		<!-- We use night mode only when SMODE is the current day (WCCODE) as we do not want to show night for next days -->
+		<test>#SMODE#=WCCODE</test>
+		<condition>
+			<!-- To test if its night we just check if sunrise hour is greater than current (#AISDAY# = 0 means "is night") -->
+			<test>#AISDAY#=0</test>
+			<!-- Storm -->
+			<condition>
+				<test>#MODE#=1</test>
+				<image>weather-storm-night.png</image>
+			</condition>
+			<condition>
+				<!-- Drizzle / Rain-->
+				<test>#MODE#=3</test>
+				<test>#MODE#=4</test>
+				<image>weather-showers-scattered-night.png</image>
+			</condition>
+			<condition>
+				<!-- Showers -->
+				<test>#MODE#=5</test>
+				<image>weather-showers-night.png</image>
+			</condition>
+			<condition>
+				<!-- Partly cloudy -->
+				<test>#MODE#=13</test>
+				<image>weather-few-clouds-night.png</image>
+			</condition>
+			<condition>
+				<!-- Mostly Cloudy -->
+				<test>#MODE#=14</test>
+				<image>weather-clouds-night.png</image>
+			</condition>
+			<condition>
+				<!-- Fair/Clear -->
+				<test>#MODE#=15</test>
+				<test>#MODE#=16</test>
+				<image>weather-clear-night.png</image>
+			</condition>
+		</condition>
+	</condition>
     <!--
     Daily conditions (parser will arrive here if it did not catch anything in night block)
     -->
